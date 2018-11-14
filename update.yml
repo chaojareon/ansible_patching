@@ -1,0 +1,21 @@
+--- 
+- hosts: all
+  remote_user: username
+  become: yes
+  tasks:
+    # This task updates our CentOS based systems
+    - name: CentOS upgrade
+      yum: 
+        update_cache=yes
+        name=*
+        state=latest
+      when:
+        ansible_distribution == 'CentOS'
+ 
+    # This task updates our Ubuntu based systems
+    - name: Ubuntu upgrade
+      apt: 
+        update_cache=yes
+        upgrade=dist
+      when: 
+        ansible_distribution == 'Ubuntu'

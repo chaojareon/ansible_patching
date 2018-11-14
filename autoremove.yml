@@ -1,0 +1,20 @@
+--- 
+- hosts: all
+  remote_user: username
+  become: yes
+  tasks:
+    - name: CentOS Kernel Cleanup
+      command: "package-cleanup --oldkernels --count=2 -y"
+      when:
+        ansible_distribution == 'CentOS'
+
+    - name: CentOS package cleanup
+      yum:
+        autoremove: yes
+
+    - name: Ubuntu package cleanup
+      apt: 
+        autoremove: yes
+        autoclean: yes
+      when: 
+        ansible_distribution == 'Ubuntu'

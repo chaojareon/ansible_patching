@@ -1,0 +1,7 @@
+--- 
+- hosts: all
+  remote_user: username
+  become: yes
+  tasks:
+    - name: Contact all hosts
+      ping: 
