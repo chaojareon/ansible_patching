@@ -11,6 +11,8 @@
     - name: CentOS package cleanup
       yum:
         autoremove: yes
+      when:
+        ansible_distibution == 'CentOS'
 
     - name: Ubuntu package cleanup
       apt: 
