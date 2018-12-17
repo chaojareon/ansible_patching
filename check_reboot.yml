@@ -1,6 +1,5 @@
 --- 
 - hosts: all
-  remote_user: username
   become: yes
   tasks:
     - name: CentOS check if reboot needed
