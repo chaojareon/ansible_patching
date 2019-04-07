@@ -2,3 +2,4 @@
 - import_playbook: update.yml
 - import_playbook: check_reboot.yml
 - import_playbook: autoremove.yml
+- import_playbook: managebox.yml

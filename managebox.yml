@@ -1,0 +1,16 @@
+---
+- hosts: manage
+  tasks:
+    # pip update manage hosts python modules
+    - name: pip update modules 
+      pip:
+        name: 
+          - pip
+          - ansible
+          - awscli
+          - boto3
+          - pyvmomi
+        extra_args: --user
+        state: latest
+        executable: "~/.local/bin/pip3"
+        
