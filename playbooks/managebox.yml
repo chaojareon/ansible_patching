@@ -10,6 +10,7 @@
           - awscli
           - boto3
           - pyvmomi
+          - cookiecutter
         extra_args: --user
         state: latest
         executable: "~/.local/bin/pip3"
