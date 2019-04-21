@@ -1,6 +1,7 @@
---- 
+---
 - hosts: all
-  become: yes
+  become: true
+  become_user: root
   tasks:
     - name: Contact all hosts
-      ping: 
+      ping:

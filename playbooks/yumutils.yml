@@ -1,13 +1,12 @@
---- 
+---
 - hosts: all
-  become: yes
+  become: true
   tasks:
     # This task updates our CentOS based systems
-    - name: CentOS upgrade
-      yum: 
-        update_cache: yes
+    - name: Install Yum-utils if not present
+      yum:
+        update_cache: true
         name: yum-utils
-        state: latest
-        update_cache: yes
+        state: present
       when:
         ansible_distribution == 'CentOS'

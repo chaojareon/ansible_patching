@@ -2,16 +2,19 @@
 - hosts: manage
   tasks:
     # pip update manage hosts python modules
-    - name: pip update modules 
+    - name: pip update modules
       pip:
-        name: 
+        name:
           - pip
           - ansible
           - awscli
           - boto3
           - pyvmomi
           - cookiecutter
-        extra_args: --user
-        state: latest
+          - molecule
+          - yamllint
+          - cfn-flip
+          - cfn-lint
+          - ansible-lint
+        extra_args: "--user --upgrade"
         executable: "~/.local/bin/pip3"
-        
