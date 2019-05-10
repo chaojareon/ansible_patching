@@ -34,5 +34,9 @@
 
   handlers:
     - name: waiting for server to come back
+      wait_for:
+        host: "{{ inventory_hostname }}"
+        state: started
+        delay: 2
+        timeout: 2
       delegate_to: localhost
-        wait_for host={{ inventory_hostname }} state=started delay=2 timeout=2

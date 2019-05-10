@@ -6,8 +6,8 @@
     # This task updates our CentOS based systems
     - name: CentOS upgrade
       yum:
-        update_cache: ytrue
-        name: *
+        update_cache: true
+        name: '*'
         state: latest
         update_only: true
       when:
