@@ -16,5 +16,6 @@
           - cfn-flip
           - cfn-lint
           - ansible-lint
+          - ansible-runner
         extra_args: "--user --upgrade"
         executable: "~/.local/bin/pip3"
