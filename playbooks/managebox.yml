@@ -17,5 +17,8 @@
           - cfn-lint
           - ansible-lint
           - ansible-runner
+          - bumpversion
+          - virtualenv
+          - bump2version 
         extra_args: "--user --upgrade"
         executable: "~/.local/bin/pip3"
