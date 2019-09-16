@@ -30,4 +30,4 @@ MIT
 
 Author Information
 ------------------
-Theo Chaojareon [<theo@chaojareon.com>]
+* Theo Chaojareon [<theo@chaojareon.com>]
