@@ -6,17 +6,17 @@
     - name: CentOS Kernel Cleanup
       command: "package-cleanup --oldkernels --count=2 -y"
       when:
-        ansible_distribution == 'CentOS'
+        ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
     - name: CentOS package cleanup
       yum:
         autoremove: true
       when:
-        ansible_distribution == 'CentOS'
+        ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
     - name: Ubuntu package cleanup
       apt:
         autoremove: true
         autoclean: true
       when:
-        ansible_distribution == 'Ubuntu'
+        ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'

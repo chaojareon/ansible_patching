@@ -11,12 +11,12 @@
         state: latest
         update_only: true
       when:
-        ansible_distribution == 'CentOS'
+        ansible_distribution == 'CentOS' or  ansible_distribution == 'Red Hat Enterpise Linux'
 
     # This task updates our Ubuntu based systems
     - name: Ubuntu upgrade
       apt:
-        update_cache: yes
-        upgrade: dist
+        update_cache: true
+        upgrade: full
       when:
-        ansible_distribution == 'Ubuntu'
+        ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
