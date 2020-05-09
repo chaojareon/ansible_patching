@@ -3,20 +3,17 @@
   become: true
   become_user: root
   tasks:
-    # This task updates our CentOS based systems
-    - name: CentOS upgrade
+    # This task updates our RHEL based systems
+    - name: RHEL upgrade
       yum:
-        update_cache: true
         name: '*'
+        update_cache: true
         state: latest
-        update_only: true
-      when:
-        ansible_distribution == 'CentOS' or  ansible_distribution == 'Red Hat Enterpise Linux'
+    when: ansible_os_family == "RedHat"
 
-    # This task updates our Ubuntu based systems
-    - name: Ubuntu upgrade
+    # This task updates our Debian based systems
+    - name: Debian upgrade
       apt:
         update_cache: true
         upgrade: full
-      when:
-        ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+    when: ansible_os_family == "Debian"

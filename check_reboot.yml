@@ -7,7 +7,7 @@
       command: needs-restarting -r
       register: reboot_required
       ignore_errors: true
-      changed_when: false
+      changed_when: true
       when:
         ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
@@ -18,27 +18,20 @@
       ignore_errors: true
       notify:
         - waiting for server to come back
-      when: (ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux') and reboot_required.rc == 1
+      when: ansible_os_family == "RedHat" and reboot_required.rc == 1
 
     - name: Ubuntu check if reboot is needed and reboot
       shell: (sleep 5; shutdown -r now "Debian/Ubuntu updates triggered") &
       args:
         removes: /var/run/reboot-required
-      async: 300
+      async: 30
       poll: 0
       ignore_errors: true
       notify:
         - waiting for server to come back
-      when:
-        ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+      when: ansible_os_family == "Debian"
 
   handlers:
     - name: waiting for server to come back
-      wait_for:
-        host: "{{ inventory_hostname }}"
-        state: started
+      wait_for_connection:
         delay: 10
-        # connect_timeout: 10
-        sleep: 10
-        timeout: 10
-      delegate_to: localhost
